@@ -5,6 +5,8 @@ node_js:
 branches:
   only:
     - master
+    
+script: echo "Firebase Functions Deployment" 
 
 deploy:
   provider: firebase
