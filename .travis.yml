@@ -7,13 +7,13 @@ branches:
     - master
 
 install:
-  - npm --prefix /$PROJECT_NAME install
+  - npm --prefix /functions install
 
 before_script:
   - npm npm --prefix /
 
 script:
-  - functions\npm install
+  - echo "Deployment started"
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
