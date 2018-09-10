@@ -9,8 +9,12 @@ branches:
 install:
   - npm --prefix /$PROJECT_NAME install
 
+before_script:
+  - npm install -g firebase-tools
+  
 script:
   - echo "Deployment started"
 
-after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
+deploy:
+  provider: script
+  script: firebase deploy --token $FIREBASE_TOKEN
