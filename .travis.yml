@@ -10,7 +10,7 @@ before_script:
   - npm install -g firebase-tools
 
 script:
-  - echo "Starting Functions Deployment"
+  - functions\npm install
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
