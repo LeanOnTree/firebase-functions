@@ -50,7 +50,7 @@ async function sendTicketCreationEmail(email, name, userMessage) {
 <p>Thank you for visiting ${APP_NAME}. This is a system generated email to let you know that we have received your message. Please don't reply to this email. Below is your original message.</p>
 
 <p>
-    ${userMessage}
+<strong>${userMessage}</strong>
 </p>
 
 Thanks,<br/>

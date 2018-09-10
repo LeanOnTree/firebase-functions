@@ -11,5 +11,5 @@ script: echo "Firebase Functions Deployment"
 deploy:
   provider: firebase
   token:
-    secure: "$ENCRYPTED_TOKEN"
+    secure: $ENCRYPTED_TOKEN
   project: "LeanOnTree" 
