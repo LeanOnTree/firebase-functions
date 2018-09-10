@@ -6,14 +6,14 @@ branches:
   only:
     - master
 
-install:
-  - npm --prefix /$PROJECT_NAME install
-
 before_script:
   - npm install -g firebase-tools
-  
+
 script:
-  - echo "Deployment started"
+  - cd functions
+
+script:
+  - npm install
 
 deploy:
   provider: script
