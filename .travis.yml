@@ -6,8 +6,11 @@ branches:
   only:
     - master
 
+install:
+  - npm --prefix /$PROJECT_NAME install
+
 before_script:
-  - npm install -g firebase-tools
+  - npm npm --prefix /
 
 script:
   - functions\npm install
