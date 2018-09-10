@@ -7,10 +7,7 @@ branches:
     - master
 
 install:
-  - npm --prefix /functions install
-
-before_script:
-  - npm npm --prefix /
+  - npm --prefix /$PROJECT_NAME install
 
 script:
   - echo "Deployment started"
