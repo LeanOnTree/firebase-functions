@@ -1,16 +1,14 @@
 language: node_js
 node_js:
-  - "6.14.0"
-
+- 6.14.0
 branches:
   only:
-    - master
-    
-script: echo "Firebase Functions Deployment" 
-
+  - master
+script: echo "Firebase Functions Deployment"
 deploy:
   provider: firebase
-  token:
-    secure: "MLGOP9RqYXWur/sq5Qvrfr4+wZLhOW5Gzmi1XihVQmVTq/1auAQzIaszcsgl8gNCqc/Rlpiw8yteoOYh8hkF1ddijWhwvCqpQNGPxagDfKxPkCyFrYnwpHWXO/QYmOI8CpAIWefNCdB2IUhx/9A69wgOHB5gQoPm/UcNRYTTcm3sXC1UTfxNlbDn518TEdFck+Fr2NZpgb82enPQtsMuR0yf3BiorjjXIqKnWNF0aTKerOaWpIX6mpL3XSEakDwMy+PAxp9g6XL/mFkowN1kDmgd5rHlCcSHKoUN5bLhwJIwKtir9xovahbjl/CXybnlylL8vBxSx1LACYYWglRpyYTpxyt5PUe81oD/YIuoFoYTZRfG1oTToffV6Mk0AqUjuDBJ5qPljureXUex7ufRV9kPDBwycSrgaCvA51E/+x1lBbZFM4vD91ScnBcHvfHiiC7mFkiOVBNBLaIiRLCGaOR+6Cm4oMZbMA5AhyQq5qm1eubEszyKsFbIakViDAJ3Xb25NBMR18aNn1DlYm0X8nYtbeA7zLlxEoaZAipFYaFRMkUrwnnxTejNI3LG4PduZ+ewNKjaIlZ8PGfF4QJX5Sw5y7zK4eBsmc/4YVUQg9c052yOD2Zk1FXm+RofnnZNyYiGUscdsZBinfG0mWsVrTDj1FB/5FgvyFfr5OSihY0="
-    project: "leanontree-5358a"
 
+  
+env:
+  global:
+    secure: J+zyyvCCpqlZiu/dfmpJ7cQyeWpWA7qxwzSylJKO3eTb2Dr7G8yiyyPFkkSWhtJ7C97qtELDHqo35i6+l7SiWSH2bEgJKcAvotIJ1NQu4mWqBfYvfOJsfkbnvaNNuumlDIuqFQEQ1HaQ1/An9ts6P3yhTRZ6tNc3r/tbnj2YIhHgm/dQBRZ+8riIj6+psuwr03JncMV0UgpIgfFJ3/UL+50UXvqGtr56dXzx3osMr+JwHUT/mDabsxpl4F7a8TDPYypTf6F/mKTPVNm/UuYmZ42eeSkfrE4xtYTf3eTFQaR7VKUaOxnDu6tt9FDlNUtbOrHJf0BOI0905tqYsrOQlTJuPtCIxhoTmg1KRksaFP2N984Jxjwnj39NVnKfTMslnZGdiBnKEu+bSO+NUwJjZFdgg1VcOTC8/qoSgihQ/DMycn2UTX74OHSknflYOQpJB4a7yqQTYddYGmoDTkaWMNED4h36ghMGKeNuuIS10WeGa/VYc7pP2LAjlJXJa0XoOWFoBMAwn08N3PvM1mCsNzLuEUohXMMXoMum5yrY3Ad2lQCXVHoftRY6von/gefEKxsns65olvLJE8Auirn5EDjrigDYEu0k1Ct24LDXs/kO6GY4dYl0I3u90o9R0tZL6/B5+/jS3RYnzRjJYkQsKozdQYc1GC2f0djrKKUwhaU=
