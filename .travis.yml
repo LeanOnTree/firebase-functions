@@ -16,7 +16,7 @@ before_deploy:
   - npm --prefix $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT install
   - npm --prefix $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT run build
   - npm install -g firebase-tools
-  - firebase functions:config:set gmail.email="$FROM_EMAIL" gmail.password="$FROM_EMAIL_PASSWORD" bcc.email_list="$BCC_EMAIL_RECIPIENT"
+  - firebase functions:config:set gmail.email="$FROM_EMAIL" gmail.password="$FROM_EMAIL_PASSWORD" bcc.email_list="$BCC_EMAIL_RECIPIENT" --token "$FIREBASE_TOKEN"
 
 deploy:
   provider: firebase
