@@ -1,20 +1,13 @@
 language: node_js
 node_js:
-  - "6.14.0"
-
+- 6.14.0
 branches:
   only:
-    - master
-
-before_script:
-  - npm install -g firebase-tools
-
+  - master
 script:
-  - cd functions
-
-script:
-  - npm install
-
+- echo "Starting Deplyoment"
 deploy:
-  provider: script
-  script: firebase deploy --token $FIREBASE_TOKEN
+  provider: firebase
+  token:
+    secure: bAmeTQdm0dcX/Vsr9JD8nC13XfCbqz/39x+q6AH9yxuK51LiyD4/qmvHhJNLoXZg4bnYBS27RVrgx9xt5RglBM3L53GYbOFHVMpJZmEzZfFD8iRhcKr6JoIOqUcyHFlTpeIvfm8BjIMad9UjFp/9UU31U+F7Ujr0/l/pFIR6DzF5HrOsR4md7WNXsY8H+lUJWXr65SM7e2/E2+8IwVxV8BrKqXyj85EB7Pb1QoXpsY8GnVaiFYsYYUya6DV6vBADlXlMIVPHlOOOP4kocN2Qdf+JaogZotQKV1LHrPkWEpYY4EqtejnbleqWZjUxcwd+rEotXoMU4yaQ6pu+vdGedyV6BG5uqHBYJfbSZCiSoaTyxmhzM51E9nCtREYUny26OxbLGlfz74gwsHYAZV+gN53osfop3K4/6L5Q/fyeH5gn/vbn+fpCFcYJJx3qT4v/uvmKAS66rZAw5hXJmoqtFNC8NkfpKLM/291rqkI1CXhnrzNbUUdplPAh5GjAKhD07v1MjQq6dJFDfXrjxe0QBNUCIPZ32fHvR+nvDJVpyoluyvXaEOg4JFtAaVdITIcLis+O/hljC9vz+b0HnKhZg4nlmrZsJNjlNkf83pdP5Lzr6MwTuT+aicl6NomqEviW6ZkOr6EimQER0R+fbjz7l2uReWUZpAkqDVBKJofKmy4=
+
