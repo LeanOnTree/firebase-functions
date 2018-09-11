@@ -9,15 +9,18 @@ branches:
 script:
   - rm -rf $TRAVIS_BUILD_DIR/firebase.json
   - mv $TRAVIS_BUILD_DIR/firebase.deploy.json $TRAVIS_BUILD_DIR/firebase.json
-  - rm -rf $TRAVIS_BUILD_DIR/functions/package.json
-  - mv $TRAVIS_BUILD_DIR/functions/package.linux.json $TRAVIS_BUILD_DIR/functions/package.json
+  - rm -rf $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT/package.json
+  - mv $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT/package.linux.json $TRAVIS_BUILD_DIR/functions/package.json
 
 before_deploy: 
-  - npm --prefix $TRAVIS_BUILD_DIR/functions install
-  - npm --prefix $TRAVIS_BUILD_DIR/functions run build
+  - npm --prefix $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT install
+  - npm --prefix $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT run build
+  - npm install -g firebase-tools
+  - firebase functions:config:set gmail.email="$FROM_EMAIL" gmail.password="$FROM_EMAIL_PASSWORD" bcc.email_list="$BCC_EMAIL_RECIPIENT"
 
 deploy:
   provider: firebase
   token:
     secure: bAmeTQdm0dcX/Vsr9JD8nC13XfCbqz/39x+q6AH9yxuK51LiyD4/qmvHhJNLoXZg4bnYBS27RVrgx9xt5RglBM3L53GYbOFHVMpJZmEzZfFD8iRhcKr6JoIOqUcyHFlTpeIvfm8BjIMad9UjFp/9UU31U+F7Ujr0/l/pFIR6DzF5HrOsR4md7WNXsY8H+lUJWXr65SM7e2/E2+8IwVxV8BrKqXyj85EB7Pb1QoXpsY8GnVaiFYsYYUya6DV6vBADlXlMIVPHlOOOP4kocN2Qdf+JaogZotQKV1LHrPkWEpYY4EqtejnbleqWZjUxcwd+rEotXoMU4yaQ6pu+vdGedyV6BG5uqHBYJfbSZCiSoaTyxmhzM51E9nCtREYUny26OxbLGlfz74gwsHYAZV+gN53osfop3K4/6L5Q/fyeH5gn/vbn+fpCFcYJJx3qT4v/uvmKAS66rZAw5hXJmoqtFNC8NkfpKLM/291rqkI1CXhnrzNbUUdplPAh5GjAKhD07v1MjQq6dJFDfXrjxe0QBNUCIPZ32fHvR+nvDJVpyoluyvXaEOg4JFtAaVdITIcLis+O/hljC9vz+b0HnKhZg4nlmrZsJNjlNkf83pdP5Lzr6MwTuT+aicl6NomqEviW6ZkOr6EimQER0R+fbjz7l2uReWUZpAkqDVBKJofKmy4=
+  skip_cleanup: true
 
