@@ -11,6 +11,8 @@ script:
 
 before_deploy: 
   - npm --prefix $TRAVIS_BUILD_DIR/functions install
+  - npm --prefix $TRAVIS_BUILD_DIR/functions run lint
+  - npm --prefix $TRAVIS_BUILD_DIR/functions run build
 
 deploy:
   provider: firebase
