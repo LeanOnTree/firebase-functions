@@ -5,11 +5,13 @@ branches:
   only:
   - master
 
-install:
-- npm --prefix $TRAVIS_BUILD_DIR/functions install 
 
 script:
 - echo "Starting Deplyoment"
+
+before_deploy: 
+  - npm --prefix $TRAVIS_BUILD_DIR/functions install
+
 deploy:
   provider: firebase
   token:
