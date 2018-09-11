@@ -1,25 +1,39 @@
 language: node_js
+
 node_js:
 - 6.14.0
+
 branches:
   only:
   - master
+
 script:
+# Delete the original firebase.json (Designed for local development machines)
 - rm -rf $TRAVIS_BUILD_DIR/firebase.json
+# Rename the firebase.deploy.json (Designed for build machines) to firebase.json
 - mv $TRAVIS_BUILD_DIR/firebase.deploy.json $TRAVIS_BUILD_DIR/firebase.json
+# Delete the original package.json (Designed for the local development machine OS type)
 - rm -rf $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT/package.json
+# Rename the package.$BUILD_MACHINE_OS_TYPE.json (Designed for the build machine OS type) to package.json
 - mv $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT/package.$BUILD_MACHINE_OS_TYPE.json $TRAVIS_BUILD_DIR/functions/package.json
+# Install node dependencies
 - npm --prefix $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT install
+# Run Firebase function Build
 - npm --prefix $TRAVIS_BUILD_DIR/$FIREBASE_PRODUCT run build
+# Install Firebase Tools
 - npm install -g firebase-tools
+
 before_deploy:
+# Setting configuration keys for Functions deployment
 - firebase functions:config:set gmail.email="$FROM_EMAIL" gmail.password="$FROM_EMAIL_PASSWORD"
   bcc.email_list="$BCC_EMAIL_RECIPIENT" --token "$FIREBASE_TOKEN"
+
 deploy:
   provider: firebase
   token:
     secure: $FIREBASE_ENCRYPTED_TOKEN
   skip_cleanup: true
+
 env:
   global:
     secure: QoP9v4KZ0qnCyGSTuOGTl8WQ1WkklGfCEKLiT82SwTuVt/JOFs/v8jNKMvtaMIdBPGYg7ooJ6Yp5/KFV0cYcPSSpi3mQuvHScFScdLZZbcwN5lK/OGPMb0NwSz3RvujUuTzyJ8EX5MXFc6WGhDoMZdVSVu1wIs4WP9wkCNNXsHuyYfi2qenNtSdEjU0VtkHyfAgYEbEptV5yqrXyyeOuE+biifDTEV+BPAnbxZstLDLgqWfZR7A/alOsCV0Spi/lUeg2YBQN1F8pc4X3n6BJsyW50d7bjj/oC6DaHNPkMdO9jB5zTsFlUIqO4Yzv9u/vQPmhBlu0eBB8H17aUPjNnPHm+qBn/4f7meAFJwj7rd7vqF2+gVJoP0mVYcj1pT15lhryCkacvedYPEy62m2FvjPLh+0dWqINcgebdUTY6ta0+eoJLKClvXflWa7hLGmuUdlr/BHO1LhbRdx60UOZUbNYJOGZhzfCrymx9YKVdVR2LcSJKwivdI0Q4oMKKPmAKLpXxHYmaw212fyr4S7LKv3aO48IxZRUOVv7NAk6ghg/VJyBbV0x31CEVO2MyNPMZnna09yu2Q2L4uODZtUvoAON1qN6EPsEDcHMPwxWAtZKp01D72hxQ7vGooLCI/U9DonZvKOYL/wx0Qci2DwwnTvAvvYmuo8wGvepsBgC5g8=
